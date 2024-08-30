@@ -1,4 +1,6 @@
+const Client = require('../Models/ClientModel');
 const HttpError = require('../Models/errorModel');
+const Influencer = require('../Models/InfluencerModel');
 const Promotion = require('../Models/PromotionModel');
 
 const createPromotion = async (req, res,next) => {
@@ -21,6 +23,12 @@ const createPromotion = async (req, res,next) => {
     console.log(newPromotion)
 
     const savedPromotion = await newPromotion.save();
+    const influencer = await Influencer.findById(influencerId);
+    const client = await Client.findById(clientId);
+    const clientPromotions = client.promotions + 1;
+    const influencerPromotions = influencer.promotions + 1;
+    await Client.findByIdAndUpdate(clientId,{promotions: influencerPromotions});
+    await Influencer.findByIdAndUpdate(influencerId,{promotions: clientPromotions});
     return res.status(201).json({savedPromotion,message: "Promotion added successfully."});
   } catch (error) {
     return next(new HttpError("Error creating promotion.",500))  
@@ -40,13 +48,13 @@ const getPromotions = async(req,res,next)=>{
     }
 }
 
-const deletePromotion = async (req, res,next) => {
+const deletePromotion = async (req, res,next) => {   // decrement the promotions for client and influencer.
   const promotionId = req.params.id;
 
   try {
     const promotion = await Promotion.findById(promotionId);
     if (!promotion) {
-      return next(new HttpError("Promotion not found.",404));
+      return next(new HttpError("Promotion not found.",404)); 
     }
 
     if (promotion.influencerId.toString() !== req.user.id) { 
@@ -55,7 +63,7 @@ const deletePromotion = async (req, res,next) => {
 
     await Promotion.findOneAndDelete({
       _id: promotionId,
-      influencerId: req.user.id, // Ensure the user is the owner
+      influencerId: req.user.id,
     });
     res.status(200).json({ message: 'Promotion deleted successfully' });
   } catch (error) {

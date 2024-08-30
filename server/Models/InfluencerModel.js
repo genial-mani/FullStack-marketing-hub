@@ -57,7 +57,11 @@ const influencerSchema = new Schema({
     {
       type: String,
     }
-  ]
+  ],
+  promotions: {
+    type: Number,
+    default: 0,
+  },
 }, {
   timestamps: true
 });

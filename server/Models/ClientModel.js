@@ -35,7 +35,11 @@ const clientSchema = new Schema({
   backgroundImage: {
     type: String,
     default: '',
-  }
+  },
+  promotions: {
+    type: Number,
+    default: 0,
+  },
 }, {
   timestamps: true
 });
