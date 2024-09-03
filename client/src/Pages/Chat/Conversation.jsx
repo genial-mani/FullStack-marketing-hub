@@ -26,7 +26,7 @@ const Conversation = ({online, currentUser, chat }) => {
         style={{ maxWidth: "4.5rem" }}
       >
         {userData?.user?.profilePicture ? (
-          <img className="rounded-full" src={userData?.user?.profilePicture} alt="" />
+          <img className="size-full rounded-full" src={userData?.user?.profilePicture} alt="" />
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"

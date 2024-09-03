@@ -19,7 +19,7 @@ app.use(express.json({ extended: true}));
 app.use(express.urlencoded({extended: true}));
 
 const corsOptions = {
-  origin: 'http://localhost:3000', //frontend URL
+  origin: ['http://localhost:3000', 'https://fullstack-marketing-hub.vercel.app'],
   credentials: true,
 };
 

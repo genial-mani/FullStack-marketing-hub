@@ -99,7 +99,7 @@ const Chatbox = ({
         >
           {userData?.profilePicture ? (
             <img
-              className="rounded-full"
+              className=" size-full rounded-full"
               src={userData?.profilePicture}
               alt=""
             />

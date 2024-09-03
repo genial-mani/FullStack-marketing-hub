@@ -39,7 +39,8 @@ const InfluencerPromotionCard = ({
   const navigate = useNavigate();
 
   const extractYouTubeId = (url) => {
-    const regex = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/|v\/|.+\?v=))([^/?&\s]+)/;
+    const regex =
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/|v\/|.+\?v=))([^/?&\s]+)/;
     const match = url.match(regex);
     console.log(match);
     return match ? match[1] : null;
@@ -63,7 +64,7 @@ const InfluencerPromotionCard = ({
           (await axios.get(
             `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${ytId}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
           ));
-        console.log(ytId)
+        console.log(ytId);
         const data = response?.data;
         if (data?.items && data?.items?.length > 0) {
           const videoDetails = data?.items[0];
@@ -74,7 +75,7 @@ const InfluencerPromotionCard = ({
             comments: videoDetails?.statistics?.commentCount,
           });
         }
-        console.log(youtubeMetrics) 
+        console.log(youtubeMetrics);
       } catch (error) {
         console.error("Error fetching video details:", error);
       }
@@ -119,33 +120,34 @@ const InfluencerPromotionCard = ({
 
   useEffect(() => {
     const fetchInstaMetrics = async () => {
-      // const options = {
-      //   method: "GET",
-      //   url: "https://instagram-statistics-api.p.rapidapi.com/posts/one",
-      //   params: {
-      //     postUrl: process.env.REACT_APP_INSTAGRAM_POST_URL,
-      //   },
-      //   headers: {
-      //     "x-rapidapi-key": process.env.REACT_APP_RAPIDAPI_KEY,
-      //     "x-rapidapi-host": "instagram-statistics-api.p.rapidapi.com",
-      //   },
-      // };
-      // try {
-      //   const response = await axios.request(options);
-      //   if (response?.data && response?.data?.data) {
-      //     setInstaMetrics({
-      //       views: response?.data?.data?.views,
-      //       likes: response?.data?.data?.likes,
-      //       comments: response?.data?.data?.comments,
-      //     });
-      //   }
-      //   console.log("insta: ", response?.data);
-      // } catch (error) {
-      //   console.error("Error fetching Instagram metrics:", error);
-      //   if(error?.response?.status === 429){
-      //     setInstaMetrics('Too many requests.')
-      //   }
-      // }
+      const options = {
+        method: "GET",
+        url: "https://instagram-statistics-api.p.rapidapi.com/posts/one",
+        params: {
+          postUrl: `${promotion?.instagram?.url}`,
+        },
+        headers: {
+          "x-rapidapi-key":
+            "f7b8c44101msh5d86a881d5d182dp17f220jsnd07eb91c13b0",
+          "x-rapidapi-host": "instagram-statistics-api.p.rapidapi.com",
+        },
+      };
+      try {
+        const response = await axios.request(options);
+        if (response?.data && response?.data?.data) {
+          setInstaMetrics({
+            views: response?.data?.data?.views,
+            likes: response?.data?.data?.likes,
+            comments: response?.data?.data?.comments,
+          });
+        }
+        console.log("insta: ", response?.data);
+      } catch (error) {
+        console.error("Error fetching Instagram metrics:", error);
+        if (error?.response?.status === 429) {
+          setInstaMetrics("Too many requests.");
+        }
+      }
     };
 
     fetchInstaMetrics();
@@ -186,18 +188,23 @@ const InfluencerPromotionCard = ({
     >
       <div className="w-full max-w-5xl min-h-fit text-black flex mx-auto">
         <div className="w-full max-w-52  flex flex-col items-center justify-around gap-3 py-2">
-          <Link to={`/clients/${promotion?.clientId?._id}`} className="size-24 overflow-hidden rounded-full grid place-items-center"><img
-            className="size-24 rounded-full bg-black  overflow-hidden hover:scale-105 transition-transform duration-200"
-            src={promotion?.clientId?.profilePicture}
-            alt=""
-          /></Link>
+          <Link
+            to={`/clients/${promotion?.clientId?._id}`}
+            className="size-24 overflow-hidden rounded-full grid place-items-center"
+          >
+            <img
+              className="size-24 rounded-full bg-black  overflow-hidden hover:scale-105 transition-transform duration-200"
+              src={promotion?.clientId?.profilePicture}
+              alt=""
+            />
+          </Link>
           <h2>{promotion?.clientId?.username}</h2>
         </div>
         <div className="w-full max-w-full flex flex-col gap-2 pt-3">
-          <h2 className="text-4xl text-center">
-            {promotion?.promotionName}
-          </h2>
-          <p className="text-center">Brand: {promotion?.clientId?.businessName}</p>
+          <h2 className="text-4xl text-center">{promotion?.promotionName}</h2>
+          <p className="text-center">
+            Brand: {promotion?.clientId?.businessName}
+          </p>
           <div className="flex gap-3 items-center justify-center h-full">
             <h2 className="w-fit">Promotions :</h2>
             <img
@@ -354,7 +361,7 @@ const InfluencerPromotionCard = ({
             <p className="text-center mt-20">
               {instaMetrics + " Try again later"}
             </p>
-          ) : (
+          ) : instaMetrics ? (
             <div className="flex flex-col pt-10 items-center gap-5">
               <div className="flex gap-3 w-full pl-10">
                 <img className="size-6" src={views} alt="" />
@@ -368,6 +375,14 @@ const InfluencerPromotionCard = ({
                 <img className="size-6" src={comments} alt="" />
                 {formatNumber(instaMetrics?.comments) || "No Results"}
               </div>
+            </div>
+          ) : (
+            <div className="size-full flex justify-center pt-20">
+              {`${
+                promotion?.instagram?.url
+                  ? "Analytics Loading..."
+                  : "No Results"
+              }`}
             </div>
           )}
         </div>
@@ -390,8 +405,8 @@ const InfluencerPromotionCard = ({
                   ? "cursor-pointer hover:scale-150"
                   : "cursor-not-allowed grayscale"
               }`}
-              onClick={() => window.open(promotion?.twitter?.url, "_blank")}
               src={twitter}
+              onClick={() => window.open(promotion?.twitter?.url, "_blank")}
               alt=""
             />
           </div>
@@ -424,7 +439,9 @@ const InfluencerPromotionCard = ({
             </div>
           ) : (
             <div className="size-full flex justify-center pt-20">
-              {`${promotion?.twitter?.url ? 'Analytics Loading...' : 'No Results'}`}
+              {`${
+                promotion?.twitter?.url ? "Analytics Loading..." : "No Results"
+              }`}
             </div>
           )}
         </div>
