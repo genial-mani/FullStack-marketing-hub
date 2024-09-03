@@ -28,7 +28,7 @@ const Chat = () => {
   }, [sendMessage]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8800");
+    socket.current = io("https://fullstack-marketing-hub-1.onrender.com");
     socket.current.emit("new-user-add", currentUser?.id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
