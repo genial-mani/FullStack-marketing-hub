@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Marketing Hub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The **Marketing Hub** is a web platform designed for influencers and clients to manage promotional campaigns and track social media engagement. It integrates various social media APIs to fetch and display influencer content, engagement metrics, and performance data, helping clients and influencers collaborate more effectively.
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+Check out the live demo of the Marketing Hub: [Live Link](#)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Influencer Campaign Management:** Influencers can manage promotional campaigns, and clients can track them in real-time.
+- **Social Media Integration:** Integrates with Instagram, YouTube, and Twitter APIs to fetch engagement metrics, video performance data, and tweets.
+- **Analytics Dashboard:** View performance metrics like views, likes, and comments for promotional activities across platforms.
+- **Real-Time Data Fetching:** Continuously fetch updated data from social media platforms to keep campaigns up-to-date.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React** 
+  <img src="public/react.svg" alt="React" width="20" height="20">
+- **JavaScript**
+  <img src="public/js.svg" alt="JavaScript" width="20" height="20">
+- **Node.js**
+  <img src="public/node.svg" alt="Node.js" width="20" height="20">
+- **MongoDB**
+  <img src="public/mongo.svg" alt="MongoDB" width="20" height="20">
+- **Express.js**
+  <img src="public/express.svg" alt="Express" width="20" height="20">
+- **Instagram, YouTube, and Twitter API**
+  <img src="public/apis.svg" alt="APIs" width="20" height="20">
 
-### `npm run build`
+## How to Run
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository: `git clone https://github.com/genial-mani/marketing-hub.git`
+2. Navigate to the project directory: `cd marketing-hub`
+3. Install dependencies: `npm install`
+4. Start the application: `npm run dev`
+5. Open your browser and visit `http://localhost:3000` or click on the link in the console.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The platform utilizes APIs from **Instagram**, **YouTube**, and **Twitter** to fetch relevant engagement data, including views, likes, comments, and tweets related to influencer campaigns.
 
-### `npm run eject`
+## Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Screenshot 1](public/marketinghub1.png)
+![Screenshot 2](public/marketinghub2.png)
+![Screenshot 3](public/marketinghub3.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Acknowledgements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [React](https://reactjs.org/)
+- [Node.js](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Instagram API](https://developers.facebook.com/docs/instagram-api/)
+- [YouTube Data API](https://developers.google.com/youtube/v3)
+- [Twitter API](https://developer.twitter.com/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`⭐ Star the repo if you like the project! 💕`
