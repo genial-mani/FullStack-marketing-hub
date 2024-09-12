@@ -7,6 +7,7 @@ import service2 from '../Assets/c24eb4d2-7187-4f3b-97a6-75c1ce618863.png'
 import service3 from '../Assets/28c28307-d823-4f64-9ed4-10aa41c539ea.png'
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import GetStarted from "../Components/GetStarted";
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
           <h2 className="text-center pt-5">
             Elevate Your Product <span className="coloring">Marketing</span> To New Heights And Reach Wider Audience
           </h2>
-          {!currentUser && <Link to={'/signup'} className="get-started text-lg px-5 py-3 w-fit rounded-full">Get started</Link>}
+          {!currentUser && <GetStarted/>}
           
         </div>
         <div className="services w-full flex gap-3 items-center justify-around">
