@@ -6,7 +6,7 @@ The **Marketing Hub** is a web platform designed for influencers and clients to 
 
 ## Live Demo
 
-Check out the live demo of the Marketing Hub: [Live Link](#)
+Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-marketing-hub.vercel.app/)
 
 ## Features
 
