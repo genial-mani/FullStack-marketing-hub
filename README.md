@@ -29,7 +29,7 @@ Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-mark
   <img src="https://avatars.githubusercontent.com/u/10566080?s=280&v=4" alt="Express" width="50" height="50">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN38qIx9MEyOa4Yuz6G9lwZE4OOqJ2hi5twQ&s" alt="Express" width="50" height="50">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWzG86oxsa3O5yMsabNoSO97BDHVct5HmYbA&s" alt="Express" width="50" height="50">
-- **Instagram, YouTube, and Twitter API**
+- Instagram, YouTube, and Twitter APIs
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanEhw1QT9iIas30wGv0fDtr-2UeevMQX9rA&s" alt="APIs" width="50" height="50">
 
 ## How to Run
