@@ -33,7 +33,7 @@ Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-mark
 ## How to Run
 
 1. Clone the repository: `git clone https://github.com/genial-mani/marketing-hub.git`
-2. Navigate to the project directory: `cd marketing-hub`
+2. Navigate to the project directory: `cd fullstack-marketing-hub`
 3. Install dependencies: `npm install`
 4. Start the application: `npm run dev`
 5. Open your browser and visit `http://localhost:3000` or click on the link in the console.
