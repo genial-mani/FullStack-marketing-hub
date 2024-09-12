@@ -17,18 +17,17 @@ Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-mark
 
 ## Technologies Used
 
-- **React** 
-  <img src="https://scontent.fjga1-1.fna.fbcdn.net/v/t39.30808-1/301799419_456670456474672_6566292128822508765_n.png?stp=dst-png_s200x200&_nc_cat=100&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=IMsC2KpWP7kQ7kNvgF_FPgG&_nc_ht=scontent.fjga1-1.fna&_nc_gid=AIKrf8p-u5fyHUVDhyxJmYo&oh=00_AYD6ZXN7WmduSaU7fE2sVCuMbDixcs98Kl9MKyq0t9Rsng&oe=66E914C2" alt="React" width="20" height="20">
-- **JavaScript**
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmyP1Fx_5N1ql7PIRnGFa2kx2_qmz7eimMXg&s" alt="JavaScript" width="20" height="20">
-- **Node.js**
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrNVwxlBhUzwBd6H4YqdJckckasr4N6PjQw&s" alt="Node.js" width="20" height="20">
-- **MongoDB**
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShLkVVZFiwIEqwzm1SXhP7N7_dfIGchUww0w&s" alt="MongoDB" width="20" height="20">
-- **Express.js**
-  <img src="https://miro.medium.com/v2/resize:fit:1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png" alt="Express" width="20" height="20">
+  <img src="https://scontent.fjga1-1.fna.fbcdn.net/v/t39.30808-1/301799419_456670456474672_6566292128822508765_n.png?stp=dst-png_s200x200&_nc_cat=100&ccb=1-7&_nc_sid=f4b9fd&_nc_ohc=IMsC2KpWP7kQ7kNvgF_FPgG&_nc_ht=scontent.fjga1-1.fna&_nc_gid=AIKrf8p-u5fyHUVDhyxJmYo&oh=00_AYD6ZXN7WmduSaU7fE2sVCuMbDixcs98Kl9MKyq0t9Rsng&oe=66E914C2" alt="React" width="50" height="50">
+
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmyP1Fx_5N1ql7PIRnGFa2kx2_qmz7eimMXg&s" alt="JavaScript" width="50" height="50">
+
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrNVwxlBhUzwBd6H4YqdJckckasr4N6PjQw&s" alt="Node.js" width="50" height="50">
+
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShLkVVZFiwIEqwzm1SXhP7N7_dfIGchUww0w&s" alt="MongoDB" width="50" height="50">
+
+  <img src="https://miro.medium.com/v2/resize:fit:1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png" alt="Express" width="50" height="50">
 - **Instagram, YouTube, and Twitter API**
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanEhw1QT9iIas30wGv0fDtr-2UeevMQX9rA&s" alt="APIs" width="20" height="20">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanEhw1QT9iIas30wGv0fDtr-2UeevMQX9rA&s" alt="APIs" width="50" height="50">
 
 ## How to Run
 
