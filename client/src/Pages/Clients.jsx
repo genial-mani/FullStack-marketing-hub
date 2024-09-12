@@ -36,7 +36,7 @@ const Clients = () => {
   }
 
   return (
-    <section className="clients-section mt-16 w-full max-w-full flex flex-wrap gap-3 p-3">
+    <section className="clients-section mt-16 w-full max-w-full flex flex-wrap items-center justify-center gap-3 p-3">
       {clients &&
         clients.map((client, index) => (
           <Link
