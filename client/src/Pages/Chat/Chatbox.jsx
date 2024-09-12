@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import moment from "moment";
-
 import EmojiInput from "react-input-emoji";
 
 const Chatbox = ({
@@ -16,9 +15,12 @@ const Chatbox = ({
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+  // Reference for scrolling
+  const scrollRef = useRef(null);
+
   useEffect(() => {
     if (recieveMessage !== null && recieveMessage.chatId === chat?._id) {
-      setMessages([...messages, recieveMessage]);
+      setMessages((prevMessages) => [...prevMessages, recieveMessage]);
     }
   }, [recieveMessage]);
 
@@ -53,7 +55,14 @@ const Chatbox = ({
       }
     };
     if (chat) getMessages();
-  }, [chat, messages,authToken]);
+  }, [chat, authToken]);
+
+  // Scroll to bottom when messages change
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   const handleChangeInput = (newMessage) => {
     setNewMessage(newMessage);
@@ -77,12 +86,12 @@ const Chatbox = ({
         }
       );
       const data = response?.data;
-      setMessages([...messages, data]);
+      setMessages((prevMessages) => [...prevMessages, data]);
       setNewMessage("");
     } catch (error) {
       console.log(error);
     }
-   
+
     // send msg to socket server
     const recieverId = chat?.members.find((id) => id !== currentUser);
     setSendMessage({ ...message, recieverId });
@@ -100,7 +109,7 @@ const Chatbox = ({
         >
           {userData?.profilePicture ? (
             <img
-              className=" size-full rounded-full"
+              className="size-full rounded-full"
               src={userData?.profilePicture}
               alt=""
             />
@@ -118,7 +127,12 @@ const Chatbox = ({
               />
             </svg>
           )}
-          {checkOnlineStatus(chat) && <div className="size-3 rounded-full absolute top-0 left-2" style={{background: '#67fb1c'}}></div>}
+          {checkOnlineStatus(chat) && (
+            <div
+              className="size-3 rounded-full absolute top-0 left-2"
+              style={{ background: "#67fb1c" }}
+            ></div>
+          )}
         </div>
         <div className="flex flex-col items-center justify-center text-left">
           <p>{userData?.username}</p>
@@ -142,12 +156,14 @@ const Chatbox = ({
                     ? "message own"
                     : "message other"
                 }`}
-              > 
+              >
                 <span>{message?.text}</span>
                 <small>{moment(message?.createdAt).fromNow()}</small>
               </div>
             </div>
           ))}
+        {/* Empty div for auto scroll */}
+        <div ref={scrollRef}></div>
       </div>
       {/* message sender */}
       <div className="msg-sender flex gap-2 items-center">
