@@ -44,7 +44,7 @@ The platform utilizes APIs from **Instagram**, **YouTube**, and **Twitter** to f
 
 ## Screenshots
 
-![Screenshot 1](client/src/Assets/Screenshot%202024-09-10%20231108.png)
+![Screenshot 1](client/src/Assets/Screenshot%202024-09-13%20021736.png)
 ![Screenshot 2](client/src/Assets/Screenshot%202024-09-13%20021139.png)
 ![Screenshot 3](client/src/Assets/Screenshot%202024-09-13%20021202.png)
 ![Screenshot 4](client/src/Assets/Screenshot%202024-09-13%20021211.png)
