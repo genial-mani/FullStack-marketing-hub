@@ -26,8 +26,11 @@ Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-mark
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShLkVVZFiwIEqwzm1SXhP7N7_dfIGchUww0w&s" alt="MongoDB" width="50" height="50">
 
   <img src="https://miro.medium.com/v2/resize:fit:1400/1*i2fRBk3GsYLeUk_Rh7AzHw.png" alt="Express" width="50" height="50">
+  <img src="https://www.linkedin.com/pulse/jwt-token-gatekeepers-unleashing-power-secure-your-talamantes" alt="Express" width="50" height="50">
+  <img src="https://www.linkedin.com/pulse/jwt-token-gatekeepers-unleashing-power-secure-your-talamantes" alt="Express" width="50" height="50">
 - **Instagram, YouTube, and Twitter API**
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanEhw1QT9iIas30wGv0fDtr-2UeevMQX9rA&s" alt="APIs" width="50" height="50">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3h97KFJvUpr5DiDAuvUx9zrD6IKuhUpvrkw&s" alt="APIs" width="50" height="50">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN38qIx9MEyOa4Yuz6G9lwZE4OOqJ2hi5twQ&s" alt="APIs" width="50" height="50">
 
 ## How to Run
 
