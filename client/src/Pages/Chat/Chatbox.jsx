@@ -10,6 +10,7 @@ const Chatbox = ({
   setSendMessage,
   recieveMessage,
   authToken,
+  checkOnlineStatus,
 }) => {
   const [userData, setUserData] = useState([]);
   const [messages, setMessages] = useState([]);
@@ -94,7 +95,7 @@ const Chatbox = ({
         style={{ backgroundColor: "#7596fa44" }}
       >
         <div
-          className="w-full rounded-full grid place-items-center"
+          className="w-full rounded-full grid place-items-center relative"
           style={{ maxWidth: "4.5rem" }}
         >
           {userData?.profilePicture ? (
@@ -117,6 +118,7 @@ const Chatbox = ({
               />
             </svg>
           )}
+          {checkOnlineStatus(chat) && <div className="size-3 rounded-full absolute top-0 left-2" style={{background: '#67fb1c'}}></div>}
         </div>
         <div className="flex flex-col items-center justify-center text-left">
           <p>{userData?.username}</p>

@@ -121,6 +121,7 @@ const Chat = () => {
             authToken={currentUser?.token}
             setSendMessage={setSendMessage}
             recieveMessage={recieveMessage}
+            checkOnlineStatus={checkOnlineStatus}
           />
         ) : (
           <h2 className="text-center text-xl mt-8 text-slate-300">
