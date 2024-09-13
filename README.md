@@ -14,6 +14,7 @@ Check out the live demo of the Marketing Hub: [Live Link](https://fullstack-mark
 - **Social Media Integration:** Integrates with Instagram, YouTube, and Twitter APIs to fetch engagement metrics, video performance data, and tweets.
 - **Analytics Dashboard:** View performance metrics like views, likes, and comments for promotional activities across platforms.
 - **Real-Time Data Fetching:** Continuously fetch updated data from social media platforms to keep campaigns up-to-date.
+- **Real-Time Communication:** Seamelessly communicate through the integrated chat application.
 
 ## Technologies Used
 
