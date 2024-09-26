@@ -20,7 +20,7 @@ const Home = () => {
       try {
         setIsLoading(true);
         const res = await  axios.get(`${process.env.REACT_APP_BASE_URL}/promotions/`);
-        setPromotions(res?.data);
+        setPromotions(res?.data?.splice(0,5));
         setIsLoading(false);
       } catch (error) {
         console.log(error)
