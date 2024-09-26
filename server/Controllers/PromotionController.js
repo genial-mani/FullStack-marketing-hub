@@ -38,7 +38,6 @@ const createPromotion = async (req, res,next) => {
 const getPromotions = async(req,res,next)=>{
     try {
         let promotions = await Promotion.find().populate('clientId','username profilePicture businessName').populate('influencerId', 'username profilePicture name');;
-        console.log(promotions) 
         if(!promotions){
             return next(new HttpError("No promotions to show.",404));
         }

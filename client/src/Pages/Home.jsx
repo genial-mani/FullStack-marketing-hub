@@ -1,17 +1,41 @@
-import React, { useContext } from "react";
-import marketImage from "../Assets/c167419b-e548-4d4e-889c-2614fb3ee49f.png";
+import React, { useContext, useEffect, useState } from "react";
 import handShake from "../Assets/3d-mini-handshake.png";
-import marketing2 from '../Assets/business-3d-businessman-jumping-with-advertising-megaphone.png'
 import service1 from '../Assets/a905bcc2-74d3-4ad1-a63f-591cde34ba28.png'
 import service2 from '../Assets/c24eb4d2-7187-4f3b-97a6-75c1ce618863.png'
 import service3 from '../Assets/28c28307-d823-4f64-9ed4-10aa41c539ea.png'
-import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 import GetStarted from "../Components/GetStarted";
+import axios from 'axios'
+import PromotionCard from "../Components/PromotionCard";
 
 
 const Home = () => {
   const {currentUser} = useContext(UserContext);
+  const [promotions,setPromotions] = useState([]);
+
+  useEffect(()=>{
+    const getPromotions = async ()=>{
+      try {
+        const res = await  axios.get(`${process.env.REACT_APP_BASE_URL}/promotions/`);
+        setPromotions(res?.data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    getPromotions();
+  },[]);
+
+  const lightColors = [
+    "#fcf372",
+    "#9bebb0",
+    "#ffb69a",
+    "#f0cd86",
+    "#bcc4ab",
+    "#84eff4",
+    "#e77f94",
+    "#eac7f6",
+];
+
   return (
     <section className="home-section mt-16">
       <div className="w-full flex flex-col px-3 pt-20 gap-5">
@@ -47,13 +71,11 @@ const Home = () => {
             <img src={handShake} alt="" />
           </div>
         </div>
-        <div className="w-full flex flex-wrap justify-around items-center">
-        <div className="img-div-2 flex items-center justify-center rounded-3xl">
-            <img className="" src={marketing2} alt="" />
-        </div>
-        <div className="img-div rounded-3xl relative">
-            <img className=" w-full h-full" src={marketImage} alt="" />
-        </div>
+        <div className="w-full flex flex-col gap-5 mb-5">
+        <h2 className="text-center text-4xl my-3 mt-14" style={{fontSize: "clamp(20px,5vw + 5px , 60px)", fontWeight: "500"}}>Recent Promotions</h2>
+        {promotions.length > 0 ? promotions?.map((promotion,index)=>
+          (<div key={index}><PromotionCard promotion={promotion} color={lightColors[index%lightColors.length]}/></div>)
+        ) : <p>No results</p>}
         </div>
       </div>
       
