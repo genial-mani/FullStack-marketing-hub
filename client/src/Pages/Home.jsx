@@ -7,19 +7,24 @@ import { UserContext } from "../Context/UserContext";
 import GetStarted from "../Components/GetStarted";
 import axios from 'axios'
 import PromotionCard from "../Components/PromotionCard";
+import Loader from "../Components/Loader";
 
 
 const Home = () => {
   const {currentUser} = useContext(UserContext);
   const [promotions,setPromotions] = useState([]);
+  const [isLoading,setIsLoading] = useState(false);
 
   useEffect(()=>{
     const getPromotions = async ()=>{
       try {
+        setIsLoading(true);
         const res = await  axios.get(`${process.env.REACT_APP_BASE_URL}/promotions/`);
         setPromotions(res?.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error)
+        setIsLoading(false)
       }
     };
     getPromotions();
@@ -73,12 +78,11 @@ const Home = () => {
         </div>
         <div className="w-full flex flex-col gap-5 mb-5">
         <h2 className="text-center text-4xl my-3 mt-14" style={{fontSize: "clamp(20px,5vw + 5px , 60px)", fontWeight: "500"}}>Recent Promotions</h2>
-        {promotions.length > 0 ? promotions?.map((promotion,index)=>
+        {isLoading ? <Loader/> : (promotions.length > 0 ? promotions?.map((promotion,index)=>
           (<div key={index}><PromotionCard promotion={promotion} color={lightColors[index%lightColors.length]}/></div>)
-        ) : <p>No results</p>}
+        ) : <p>No results</p>)}
         </div>
       </div>
-      
     </section>
   );
 };
