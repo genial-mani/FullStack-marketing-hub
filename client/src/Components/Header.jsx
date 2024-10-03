@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 import axios from "axios";
 import defaultPic from "../Assets/profile.svg";
-import Marquee from 'react-fast-marquee'
-import logo from '../Assets/Screenshot_2024-08-22_161346-transformed-removebg-preview.png'
+import Marquee from "react-fast-marquee";
+import logo from "../Assets/Screenshot_2024-08-22_161346-transformed-removebg-preview.png";
 
 const Header = () => {
   const { currentUser } = useContext(UserContext);
@@ -72,7 +72,10 @@ const Header = () => {
       }`}
     >
       <div className="product-heading flex justify-center items-center">
-        <Link to={"/"} className="coloring flex items-center justify-center pl-3">
+        <Link
+          to={"/"}
+          className="coloring flex items-center justify-center pl-3"
+        >
           <img className="size-10 mb-1.5" src={logo} alt="" />
           M-Hub
         </Link>
@@ -134,7 +137,7 @@ const Header = () => {
         style={
           !isChecked
             ? { display: "none", background: "#F8FDFE" }
-            : { display: "flex", background: "#F8FDFE" } 
+            : { display: "flex", background: "#F8FDFE" }
         }
       >
         {!currentUser?.id && (
@@ -160,7 +163,8 @@ const Header = () => {
         )}
         {currentUser?.id && (
           <Marquee className="text-lg">
-            <p>{` Hi! ${user?.username} `}{" "}</p><p className="w-5"></p>
+            <p>{` Hi! ${user?.username} `} </p>
+            <p className="w-5"></p>
           </Marquee>
         )}
         {currentUser?.id && (
