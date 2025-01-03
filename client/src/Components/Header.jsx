@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, MotionConfig } from "framer-motion";
 import { UserContext } from "../Context/UserContext";
 import axios from "axios";
@@ -8,21 +8,43 @@ import Marquee from "react-fast-marquee";
 import logo from "../Assets/Screenshot_2024-08-22_161346-transformed-removebg-preview.png";
 
 const Header = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser,setCurrentUser } = useContext(UserContext);
   const [isChecked, setIsChecked] = useState(false);
   const [user, setUser] = useState(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [visible, setVisible] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleMenu = (e) => {
-    setIsChecked(e.target.checked);
-  };
-
-  const handleClick = () => {
-    setIsChecked(!isChecked);
-  };
-
+  useEffect(() => {
+    const decodeToken = async () => {
+      try {
+        const token = currentUser?.token;  
+        if (!token) {
+          alert("Session expired. Please login again", 401);
+          navigate('/login');
+          return;
+        }
+  
+        const response = await axios.post(
+          `${process.env.REACT_APP_BASE_URL}/users/decode/${token}`
+        );
+  
+        const isValid = response?.data?.message;
+        if (!isValid) {
+          setCurrentUser(null);
+          alert("Session expired. Please login again", 401);
+          navigate('/login', { replace: true });
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    if (currentUser && location?.pathname !== "/login") {
+      decodeToken();
+    }
+  }, [currentUser, location?.pathname]);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -40,7 +62,6 @@ const Header = () => {
   }, [currentUser, user]);
 
   useEffect(() => {
-    console.log();
     if (currentUser?.token === null) {
       navigate("/login");
     }
@@ -65,6 +86,14 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrollPosition]);
+
+  const handleMenu = (e) => {
+    setIsChecked(e.target.checked);
+  };
+
+  const handleClick = () => {
+    setIsChecked(!isChecked);
+  };
 
   return (
     <header
@@ -157,8 +186,8 @@ const Header = () => {
       >
         {!currentUser?.id && (
           <motion.a
-          whileHover={{scaleX: [0.9,1.1,1]}}
-          transition={{ duration: 0.3 }}
+            whileHover={{ scaleX: [0.9, 1.1, 1] }}
+            transition={{ duration: 0.3 }}
             href={"/login"}
             className="login w-full max-w-full px-5 py-2 rounded-3xl"
             style={{
@@ -171,8 +200,8 @@ const Header = () => {
         )}
         {!currentUser?.id && (
           <motion.a
-          whileHover={{scaleX: [0.9,1.1,1]}}
-          transition={{ duration: 0.3 }}
+            whileHover={{ scaleX: [0.9, 1.1, 1] }}
+            transition={{ duration: 0.3 }}
             href={"/signup"}
             className="signup px-5 py-2 rounded-3xl"
             onClick={() => setIsChecked(false)}
