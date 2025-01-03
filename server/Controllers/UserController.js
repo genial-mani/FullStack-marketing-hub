@@ -8,7 +8,6 @@ const HttpError = require('../Models/errorModel')
 const getUserModel = (role)=>{
     if(role === "Influencer") return Influencer;
     if(role === "Client") return Client;
-    console.log(role)
     throw new HttpError('Invalid user role login again.',422)
 }
 
@@ -45,8 +44,6 @@ const registerUser = async (req, res, next) => {
             email
         });
 
-        
-        console.log(newUser)
         await newUser.save(); 
         
         const {_id: id} = newUser;
@@ -99,7 +96,7 @@ const loginUser = async(req,res,next)=>{
         const token = jwt.sign(
             { id , username },
             process.env.JWT_SECRET,
-            { expiresIn: '1h' }
+            { expiresIn: '1m' }
         );
 
         res.status(200).json({ id, username: user.username,role , token,profile_pic });
@@ -128,5 +125,16 @@ const getUser = async(req,res,next)=>{
 }
 
 
-module.exports = {registerUser,loginUser,getUser}
+const decodeToken = (req,res,next) => {
+    try {
+        const {token} = req.params;
+        const decode = jwt.decode(token);
+        const exp = decode.exp;
+        return Math.floor(Date.now() / 1000) < exp ? res.status(200).json({message: true}) : res.status(200).json({message: false});
+    } catch (error) {
+        return next(new HttpError('Authentication failed. Please login again.', 401));
+    }
+}
+
+module.exports = {registerUser,loginUser,getUser,decodeToken} 
 
