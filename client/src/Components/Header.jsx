@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { motion, MotionConfig } from "framer-motion";
 import { UserContext } from "../Context/UserContext";
 import axios from "axios";
 import defaultPic from "../Assets/profile.svg";
@@ -82,28 +83,42 @@ const Header = () => {
       </div>
       <nav className="flex items-center">
         <ul className="flex gap-5 items-center justify-around w-full">
-          <Link to={"/clients"} onClick={() => setIsChecked(false)}>
-            Clients
-          </Link>
-          <Link to={"/influencers"} onClick={() => setIsChecked(false)}>
-            Influencers
-          </Link>
-          <Link to={"/chat"} onClick={() => setIsChecked(false)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
+          <MotionConfig transition={{ duration: 0.3 }}>
+            <motion.a
+              whileHover={{ scaleX: [0.9, 1.1, 1] }}
+              href={"/clients"}
+              onClick={() => setIsChecked(false)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
-              />
-            </svg>
-          </Link>
+              Clients
+            </motion.a>
+            <motion.a
+              whileHover={{ scaleX: [0.9, 1.1, 1] }}
+              href={"/influencers"}
+              onClick={() => setIsChecked(false)}
+            >
+              Influencers
+            </motion.a>
+            <motion.a
+              whileHover={{ scaleX: [0.9, 1.1, 1] }}
+              href={"/chat"}
+              onClick={() => setIsChecked(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
+                />
+              </svg>
+            </motion.a>
+          </MotionConfig>
         </ul>
       </nav>
       <div className="flex items-center justify-center p-1">
@@ -141,8 +156,10 @@ const Header = () => {
         }
       >
         {!currentUser?.id && (
-          <Link
-            to={"/login"}
+          <motion.a
+          whileHover={{scaleX: [0.9,1.1,1]}}
+          transition={{ duration: 0.3 }}
+            href={"/login"}
             className="login w-full max-w-full px-5 py-2 rounded-3xl"
             style={{
               background: "linear-gradient(245deg,#4C6EEE22,#ea00ff22)",
@@ -150,16 +167,18 @@ const Header = () => {
             onClick={() => setIsChecked(false)}
           >
             Login
-          </Link>
+          </motion.a>
         )}
         {!currentUser?.id && (
-          <Link
-            to={"/signup"}
+          <motion.a
+          whileHover={{scaleX: [0.9,1.1,1]}}
+          transition={{ duration: 0.3 }}
+            href={"/signup"}
             className="signup px-5 py-2 rounded-3xl"
             onClick={() => setIsChecked(false)}
           >
             SignUp
-          </Link>
+          </motion.a>
         )}
         {currentUser?.id && (
           <Marquee className="text-lg">

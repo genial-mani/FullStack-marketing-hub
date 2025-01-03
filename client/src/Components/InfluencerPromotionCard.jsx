@@ -121,16 +121,15 @@ const InfluencerPromotionCard = ({
   useEffect(() => {
     const fetchInstaMetrics = async () => {
       const options = {
-        method: "GET",
-        url: "https://instagram-statistics-api.p.rapidapi.com/posts/one",
+        method: 'GET',
+        url: 'https://instagram-statistics-api.p.rapidapi.com/posts/one',
         params: {
-          postUrl: `${promotion?.instagram?.url}`,
+          postUrl: `${promotion?.instagram?.url}`
         },
         headers: {
-          "x-rapidapi-key":
-            "f7b8c44101msh5d86a881d5d182dp17f220jsnd07eb91c13b0",
-          "x-rapidapi-host": "instagram-statistics-api.p.rapidapi.com",
-        },
+          'x-rapidapi-key': '6eb87c7225mshc63cb1876dcd3cfp1a0485jsnff1e44c3b371',
+          'x-rapidapi-host': 'instagram-statistics-api.p.rapidapi.com'
+        }
       };
       try {
         const response = await axios.request(options);
@@ -380,7 +379,7 @@ const InfluencerPromotionCard = ({
             <div className="size-full flex justify-center pt-20">
               {`${
                 promotion?.instagram?.url
-                  ? "Analytics Loading..."
+                  ? "currently down..." // change here after instagram api works
                   : "No Results"
               }`}
             </div>

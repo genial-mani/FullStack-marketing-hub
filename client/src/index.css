@@ -19,7 +19,7 @@
   --accent: #ea00ff;
   --text-color: #05061f;
   --link-background: #eeddf1;
-  --sample: #d60aff22;
+  --sample: rgba(214, 10, 255, 0.133);
   --sampler: #ffae00;
 }
 
@@ -55,7 +55,7 @@ body {
   max-width: 50%;
 }
 
-.nav-header nav ul :Link{
+.nav-header nav ul a{
   padding: 5px 20px;
   background: linear-gradient(245deg,#4C6EEE22,#ea00ff22);
   border-radius: 25px;
@@ -144,7 +144,7 @@ body {
 .services div{
   width: 300px;
   height: 300px;
-  background-color: var(--sample);
+  /* background-color: var(--sample); */
 }
 
 .services img{
@@ -159,9 +159,8 @@ body {
   font-size: 17px;
   font-weight: 500;
   color: #efefef;
-  border: 3px solid #ea00ff;
   border-radius: 30px;
-  box-shadow: 0 0 0 #ea00ff;
+  box-shadow: rgba(50, 50, 93, 0.03) 0px 30px 50px -12px inset, #00000033 0px 18px 26px -18px inset;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }

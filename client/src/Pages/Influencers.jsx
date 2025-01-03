@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {easeInOut, motion} from 'framer-motion';
 import default_profile from "../Assets/profile.svg";
 import twitter from '../Assets/x.svg'
 import youtube from "../Assets/youtube.svg";
@@ -25,10 +26,10 @@ const Influencers = () => {
     "Furniture Brands",
     "Food & Beverages",
     "Footwear",
-    "Farming & Agriculture",
     "Toys & Games",
     "Electronics & Gadgets",
     "Home & Living",
+    "Farming & Agriculture",
     "Kitchen Appliances",
     "Pet Products",
     "Beauty & Health",
@@ -123,8 +124,12 @@ const Influencers = () => {
     <section className="login-section mt-16 w-full max-w-full px-5 pt-8 mb-7">
       <div className="w-full max-w-full flex flex-wrap items-center justify-center gap-2 min-h-52 overflow-auto no-scrollbar pt-3">
         {categoriesList?.map((c, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{opacity: 0, scale: 0}}
+            whileInView={{opacity: 1,scale: 1}}
+            viewport={{once: true}}
+            transition={{delay: index*0.01}}
             className="w-fit px-3 py-3 rounded-full cursor-pointer text-sm bg-emerald-200 hover:bg-emerald-400 relative"
             onClick={() => handleClick(c)}
           >
@@ -140,13 +145,17 @@ const Influencers = () => {
                 X
               </div>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
       <div className="w-full max-w-full h-28 mb-5">
         <form className="w-full max-w-2xl mx-auto relative mt-10">
           <img className="size-6 absolute top-3 left-3" src={search} alt="" />
-          <input
+          <motion.input
+            initial={{opacity: 0,x:-50}}
+            whileInView={{opacity: 1,x:0}}
+            viewport={{once: true}}
+            transition={{delay:1,duration: 0.8}}
             value={searchTerm}
             onChange={(e) => {
               handleChange(e);
@@ -161,8 +170,12 @@ const Influencers = () => {
       <div className="w-full max-w-full flex flex-wrap gap-10 justify-center">
         {filteredInfluencers &&
           filteredInfluencers.map((influencer, index) => (
-            <Link
-              to={`/influencers/${influencer._id}`}
+            <motion.a
+              initial={{opacity: 0,scale:0}}
+              whileInView={{opacity: 1,scale:1}}
+              viewport={{once: true}}
+              transition={{duration: 0.8,ease: 'backInOut'}}
+              href={`/influencers/${influencer._id}`}
               key={index}
               className="w-full max-w-64 rounded-3xl max-h-80 flex-grow"
             >
@@ -218,7 +231,7 @@ const Influencers = () => {
                   </p>
                 </div>
               </div>
-            </Link>
+            </motion.a>
           ))}
       </div>
     </section>

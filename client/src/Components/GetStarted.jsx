@@ -1,9 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 const GetStarted = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <Link to={'/signup'} className="getstarted text-lg px-5 py-3 w-fit rounded-full mx-auto mt-5">
+    <motion.a
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1, type: "spring"}}
+      href={"/signup"}
+      className="getstarted text-lg px-5 py-3 w-fit rounded-full mx-auto mt-5"
+    >
       Get Started
       <div className="star-1">
         <svg
@@ -14,7 +22,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -37,7 +45,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -60,7 +68,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -83,7 +91,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -106,7 +114,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -129,7 +137,7 @@ const GetStarted = () => {
             textRendering: "geometricPrecision",
             imageRendering: "optimizeQuality",
             fillRule: "evenodd",
-            clipRule: "evenodd"
+            clipRule: "evenodd",
           }}
           viewBox="0 0 784.11 815.53"
         >
@@ -143,7 +151,7 @@ const GetStarted = () => {
           </g>
         </svg>
       </div>
-    </Link>
+    </motion.a>
   );
 };
 
