@@ -100,19 +100,15 @@ const Chatbox = ({
   return (
     <section className="chatbox-section w-full max-w-full h-full p-2 flex flex-col">
       <section
-        className="w-full max-w-full min-h-20 flex gap-3 p-1 rounded-full cursor-pointer"
+        className="w-full max-w-full h-20 flex gap-3 p-1 rounded-full cursor-pointer"
         style={{ backgroundColor: "#7596fa44" }}
       >
         <div
-          className="w-full rounded-full grid place-items-center relative"
+          className="w-full rounded-full grid place-items-center relative overflow-hidden"
           style={{ maxWidth: "4.5rem" }}
         >
           {userData?.profilePicture ? (
-            <img
-              className="size-full rounded-full"
-              src={userData?.profilePicture}
-              alt=""
-            />
+            <img className="size-full rounded-full" src={userData?.profilePicture} alt="" />
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"

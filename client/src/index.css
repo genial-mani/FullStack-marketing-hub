@@ -333,12 +333,14 @@ body {
 
 .message{
   width: fit-content;
-  max-width: fit-content;
+  max-width: 70%;
   min-height: fit-content;
   border-radius: 30px;
   padding: 10px 25px;
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  font-size: 15px;
 }
 
 .own{

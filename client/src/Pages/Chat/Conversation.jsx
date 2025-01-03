@@ -18,15 +18,15 @@ const Conversation = ({online, currentUser, chat }) => {
 
   return (
     <section
-      className="w-full max-w-full min-h-20 flex gap-3 p-1 rounded-full cursor-pointer"
+      className="w-full max-w-full h-20 flex gap-3 p-1 rounded-full cursor-pointer"
       style={{ backgroundColor: "#7596fa44" }}
     >
       <div
-        className="w-full rounded-full grid place-items-center relative"
+        className="w-full rounded-full grid place-items-center relative overflow-hidden"
         style={{ maxWidth: "4.5rem" }}
       >
         {userData?.user?.profilePicture ? (
-          <img className="size-full rounded-full" src={userData?.user?.profilePicture} alt="" />
+          <img className="size-full rounded-full " src={userData?.user?.profilePicture} alt="" />
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
