@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import {easeInOut, motion} from 'framer-motion';
+import { motion } from "framer-motion";
+import { categories } from "../Components/Categories";
 import default_profile from "../Assets/profile.svg";
-import twitter from '../Assets/x.svg'
+import twitter from "../Assets/x.svg";
 import youtube from "../Assets/youtube.svg";
 import instagram from "../Assets/insta.svg";
 import star from "../Assets/icons8-star-30.png";
@@ -16,48 +16,7 @@ const Influencers = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [cat, setCat] = useState([]);
 
-  const categoriesList = [
-    "Cosmetics & Makeup",
-    "Skin Care",
-    "Beverages & Drinks",
-    "Fitness & Gym Products",
-    "App & Website Promotions",
-    "Clothing Brands",
-    "Furniture Brands",
-    "Food & Beverages",
-    "Footwear",
-    "Toys & Games",
-    "Electronics & Gadgets",
-    "Home & Living",
-    "Farming & Agriculture",
-    "Kitchen Appliances",
-    "Pet Products",
-    "Beauty & Health",
-    "Groceries",
-    "Sports & Fitness",
-    "Bags & Luggage",
-    "Baby Products & Toys",
-    "Kids' Fashion",
-    "Automotive & Industrial",
-    "Books & Literature",
-    "Movies & Entertainment",
-    "Video Games",
-    "Mobiles & Computers",
-    "TV & Appliances",
-    "Men's Fashion",
-    "Women's Fashion",
-    "Healthcare & Wellness",
-    "Travel & Tourism",
-    "Education & E-learning",
-    "Real Estate",
-    "Jewelry & Accessories",
-    "Financial Services",
-    "Technology & Software",
-    "Art & Design",
-    "Music & Instruments",
-    "Event Planning",
-    "Hospitality & Restaurants",
-  ];
+  const categoriesList = categories;
 
   useEffect(() => {
     const fetchInfluencers = async () => {
@@ -82,10 +41,14 @@ const Influencers = () => {
   };
 
   const filteredInfluencers = influencers?.filter((c) => {
-    const categoryMatch = cat.length > 0 ? cat.every(category => c?.categories?.includes(category)) : true;
-    const searchTermMatch = c?.username?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
-                            c?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
-                            c?.bio?.toLowerCase()?.includes(searchTerm?.toLowerCase());
+    const categoryMatch =
+      cat.length > 0
+        ? cat.every((category) => c?.categories?.includes(category))
+        : true;
+    const searchTermMatch =
+      c?.username?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
+      c?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()) ||
+      c?.bio?.toLowerCase()?.includes(searchTerm?.toLowerCase());
     return categoryMatch && searchTermMatch;
   });
 
@@ -97,16 +60,16 @@ const Influencers = () => {
   };
 
   const handleClick = (c) => {
-    setCat((prevCat)=>{
-      if(!prevCat.includes(c)){
-        return [...prevCat,c];
+    setCat((prevCat) => {
+      if (!prevCat.includes(c)) {
+        return [...prevCat, c];
       }
       return prevCat;
     });
   };
 
   const handleClose = (c) => {
-    setCat((prevCat)=> prevCat.filter((cat)=> cat !== c));
+    setCat((prevCat) => prevCat.filter((cat) => cat !== c));
   };
 
   if (isLoading) {
@@ -126,10 +89,10 @@ const Influencers = () => {
         {categoriesList?.map((c, index) => (
           <motion.div
             key={index}
-            initial={{opacity: 0, scale: 0}}
-            whileInView={{opacity: 1,scale: 1}}
-            viewport={{once: true}}
-            transition={{delay: index*0.01}}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.01 }}
             className="w-fit px-3 py-3 rounded-full cursor-pointer text-sm bg-emerald-200 hover:bg-emerald-400 relative"
             onClick={() => handleClick(c)}
           >
@@ -152,10 +115,10 @@ const Influencers = () => {
         <form className="w-full max-w-2xl mx-auto relative mt-10">
           <img className="size-6 absolute top-3 left-3" src={search} alt="" />
           <motion.input
-            initial={{opacity: 0,x:-50}}
-            whileInView={{opacity: 1,x:0}}
-            viewport={{once: true}}
-            transition={{delay:1,duration: 0.8}}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1, duration: 0.8 }}
             value={searchTerm}
             onChange={(e) => {
               handleChange(e);
@@ -171,10 +134,10 @@ const Influencers = () => {
         {filteredInfluencers &&
           filteredInfluencers.map((influencer, index) => (
             <motion.a
-              initial={{opacity: 0,scale:0}}
-              whileInView={{opacity: 1,scale:1}}
-              viewport={{once: true}}
-              transition={{duration: 0.8,ease: 'backInOut'}}
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "backInOut" }}
               href={`/influencers/${influencer._id}`}
               key={index}
               className="w-full max-w-64 rounded-3xl max-h-80 flex-grow"
@@ -218,7 +181,6 @@ const Influencers = () => {
                   >
                     <img src={instagram} alt="" />
                   </div>
-
                 </div>
                 <div className="overall-rating w-full flex items-center gap-2 mt-3 pl-5">
                   <img src={star} alt="" />

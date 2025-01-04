@@ -9,6 +9,7 @@ import GetStarted from "../Components/GetStarted";
 import axios from "axios";
 import PromotionCard from "../Components/PromotionCard";
 import Loader from "../Components/Loader";
+import Morquee from "../Components/Morquee";
 
 const Home = () => {
   const { currentUser } = useContext(UserContext);
@@ -186,6 +187,8 @@ const Home = () => {
             />
           </div>
         </div>
+        {/* Morquee component */}
+        <Morquee />
         <div className="w-full flex flex-col gap-5 mb-5">
           <h2
             className="text-center text-4xl my-3 mt-14"

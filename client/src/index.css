@@ -575,6 +575,12 @@ box-shadow:  5px 5px 10px #bfbfbf,
 
 /* ********************************************************** Loader ************************************** */
 
+
+.pause {
+  animation-play-state: paused;
+}
+
+
 .loader {
   width: 100%;
   height: 100%;
