@@ -21,7 +21,7 @@ const Header = () => {
       try {
         const token = currentUser?.token;  
         if (!token) {
-          alert("Session expired. Please login again", 401);
+          alert("No token. Please login again", 401);
           navigate('/login');
           return;
         }
