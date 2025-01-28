@@ -18,6 +18,7 @@ import InfluencerProfile from './Pages/InfluencerProfile';
 import UpdateInfluencer from './Pages/UpdateInfluencer';
 import InfluencerDashboard from './Pages/InfluencerDashboard';
 import ClientDashboard from './Pages/ClientDashboard';
+import { Analytics } from "@vercel/analytics/react"
 
 const router = createBrowserRouter([
   {
@@ -47,5 +48,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router}/>
+    <Analytics />
   </React.StrictMode>
 );
